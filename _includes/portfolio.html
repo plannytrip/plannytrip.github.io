@@ -1,0 +1,205 @@
+<section class="no-padding" id="portfolio">
+    <div class="container-fluid">
+
+        <div class="image-grid">
+            <a href="#" class="portfolio-box">
+                <img src="img/portfolio/1.jpg" class="img-responsive" alt="">
+                <div class="portfolio-box-caption">
+                    <div class="portfolio-box-caption-content">
+                        <div class="project-category text-faded">
+                            Australia
+                        </div>
+                        <div class="project-name">
+                            Sydney
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="portfolio-box">
+                <img src="img/portfolio/2.jpg" class="img-responsive" alt="">
+                <div class="portfolio-box-caption">
+                    <div class="portfolio-box-caption-content">
+                        <div class="project-category text-faded">
+                            Bolivia
+                        </div>
+                        <div class="project-name">
+                            Uyuni
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="portfolio-box">
+                <img src="img/portfolio/3.jpg" class="img-responsive adjust-image" alt="">
+                <div class="portfolio-box-caption">
+                    <div class="portfolio-box-caption-content">
+                        <div class="project-category text-faded">
+                            Bolivia
+                        </div>
+                        <div class="project-name">
+                            Uyuni
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a  class="portfolio-box">
+                <img src="img/portfolio/4.jpg" class="img-responsive" alt="">
+                <div class="portfolio-box-caption">
+                    <div class="portfolio-box-caption-content">
+                        <div class="project-category text-faded">
+                            Singapore
+                        </div>
+                        <div class="project-name">
+                            Marina Bay
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="portfolio-box">
+                <img src="img/portfolio/5.jpg" class="img-responsive" alt="">
+                <div class="portfolio-box-caption">
+                    <div class="portfolio-box-caption-content">
+                        <div class="project-category text-faded">
+                            Chile
+                        </div>
+                        <div class="project-name">
+                            Cajón del Maipo
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="portfolio-box">
+                <img src="img/portfolio/6.jpg" class="img-responsive adjust-image " alt="">
+                <div class="portfolio-box-caption">
+                    <div class="portfolio-box-caption-content">
+                        <div class="project-category text-faded">
+                            Japan
+                        </div>
+                        <div class="project-name">
+                            Kyoto
+                        </div>
+                    </div>
+                </div>
+            </a>
+    </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .image-grid {
+        display: grid;
+        /* background-image: url("img/portfolio/back.webp");  */
+        grid-template-columns: repeat(3, 1fr); /* Three equal columns */
+        grid-gap: 15px;
+        padding: 15px; /* Adds space around the grid */
+        margin: 0; /* Removes margin to span entire page */
+        width: 100%; /* Full width of the page */
+    }
+    .image-grid img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16/9; /* Maintain aspect ratio */
+        object-fit: cover;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .adjust-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensures the image covers the container */
+    object-position: 50% 30%; /* Centers the image horizontally and moves it 20% down */
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+    
+
+    /* Initial styles to hide the full-screen image */
+.full-image-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    z-index: 1000; /* Ensure it overlays other elements */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Image displayed in the center of the screen */
+.full-image-overlay img {
+    max-width: 90%;
+    max-height: 90%;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Mobile View: Change to a Single Column */
+@media (max-width: 768px) {
+    .image-grid {
+        grid-template-columns: 1fr; /* One column layout */
+        grid-template-rows: auto; /* Automatically adjust row heights */
+    }
+}
+</style>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // Select all portfolio-box elements
+        const portfolioBoxes = document.querySelectorAll('.portfolio-box');
+        const body = document.body;
+
+        // Create a single overlay for the full image
+        const overlay = document.createElement('div');
+        overlay.classList.add('full-image-overlay');
+        overlay.innerHTML = `<img src="" alt="Full Image">`;
+        body.appendChild(overlay);
+
+        const overlayImage = overlay.querySelector('img');
+
+        portfolioBoxes.forEach((box) => {
+            let clickCount = 0;
+            const image = box.querySelector('img');
+            const caption = box.querySelector('.portfolio-box-caption');
+
+            // Hide caption initially
+            caption.style.opacity = '0';
+            caption.style.transition = 'opacity 0.3s';
+
+            box.addEventListener('click', (event) => {
+                event.preventDefault(); // Prevent default link behavior
+                clickCount++;
+
+                // Single click: Toggle caption visibility
+                if (clickCount === 1) {
+                    caption.style.opacity = caption.style.opacity === '1' ? '0' : '1';
+
+                    // Reset clickCount after a delay to allow double-click functionality
+                    setTimeout(() => {
+                        clickCount = 0;
+                    }, 300); // 300ms threshold for detecting double clicks
+                }
+
+                // Double click: Open the image in full screen
+                if (clickCount === 2) {
+                    overlayImage.src = image.src; // Set the overlay image to the clicked image
+                    overlay.style.display = 'flex'; // Show the overlay
+                    clickCount = 0; // Reset clickCount
+                }
+            });
+        });
+
+        // Close the overlay when clicked
+        overlay.addEventListener('click', () => {
+            overlay.style.display = 'none'; // Hide the overlay
+        });
+    });
+</script>

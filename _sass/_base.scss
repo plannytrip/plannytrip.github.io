@@ -1,0 +1,533 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    @include serif-font;
+}
+
+hr {
+    border-color: $theme-primary;
+    border-width: 3px;
+    max-width: 50px;
+}
+
+hr.light {
+    border-color: white;
+}
+
+a {
+    @include transition-all;
+    color: $theme-primary;
+    &:hover,
+    &:focus {
+        color: darken($theme-primary, 10%);
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    @include sans-serif-font;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.bg-primary {
+    background-color: $theme-primary;
+}
+
+.bg-dark {
+    background-color: $theme-dark;
+    color: white;
+}
+
+.text-faded {
+    color: rgba(white, .7);
+}
+
+section {
+    padding: 100px 0;
+}
+
+aside {
+    padding: 50px 0;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+// Navigation
+
+.navbar-default {
+    background-color: white;
+    border-color: rgba($theme-dark, .5);
+    @include sans-serif-font;
+    @include transition-all;
+    .navbar-header .navbar-brand {
+        color: $theme-primary;
+        @include sans-serif-font;
+        font-weight: 700;
+        text-transform: uppercase;
+        &:hover,
+        &:focus {
+            color: darken($theme-primary, 10%);
+        }
+    }
+    .nav {
+        > li {
+            > a,
+            > a:focus {
+                text-transform: uppercase;
+                font-weight: 700;
+                font-size: 13px;
+                color: $theme-dark;
+                &:hover {
+                    color: $theme-primary;
+                }
+            }
+            &.active {
+                > a,
+                > a:focus {
+                    color: $theme-primary !important;
+                    background-color: transparent;
+                    &:hover {
+                        background-color: transparent;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+// Homepage Header
+
+header {
+    position: relative;
+    width: 100%;
+    //height: 100vh; 
+    min-height: 100vh; 
+    @include background-cover;
+    background-position: center;
+    background-image: url('../img/header.jpg');
+    text-align: center;
+    color: white;
+
+    /* Add a semi-transparent overlay */
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5); /* Adjust transparency */
+        z-index: 1;
+    }
+
+    .header-content {
+        position: relative;
+        z-index: 2; /* Ensure content is above the overlay */
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Center content vertically */
+        align-items: center; /* Center content horizontally */
+        width: 100%;
+        height: 100%; /* Make .header-content span the entire header */
+        padding: 80px 15px 100px;
+
+        .header-content-inner {
+            width: 100%;
+            height: 100%; /* Make .header-content-inner span the entire header */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Distribute objects inside */
+            align-items: left;
+            //margin-top: 20px;
+
+            h1 {
+                font-weight: 900;
+                color: rgba(255, 255, 255, 1);
+                text-transform: uppercase;
+                margin-top: 0;
+                margin-bottom: 0;
+            }
+            hr {
+                margin: 30px auto;
+            }
+            p {
+                font-weight: 900;
+                color: rgba(255, 255, 255, 1);
+                font-size: 25px;
+                margin-bottom: 50px;
+            }
+        }
+    }
+
+
+}
+
+
+    /* Mobile-specific styles */
+
+
+    // @media (max-width: 768px) {
+    //    // background-size: contain;width: 100%;
+    //     max-width: 100%;
+    //     width: 100%;
+    //     height: auto;
+    //     min-height: 100vh;
+    //     .header-container {
+    //         padding: 10px; /* Reduce padding for smaller screens */
+    //     }
+    
+    //     .header-container h1, .header-container p {
+    //         font-size: 1.2rem; /* Scale down font size on mobile */
+    //     }
+    // }
+    // @media (min-width: 768px) {
+    //     min-height: 100%;
+    //     .header-content {
+    //         position: absolute;
+    //         top: 50%;
+    //         -webkit-transform: translateY(-50%);
+    //         -ms-transform: translateY(-50%);
+    //         transform: translateY(-50%);
+    //         padding: 0 50px;
+    //         .header-content-inner {
+    //              // Change here for the width of the header text in the picture
+    //             max-width: 2000px;
+    //             margin-left: auto;
+    //             // Change here for the position of the in the main image in the header
+    //             margin-right: 600px;
+    //             p {
+    //                 font-size: 27px;
+    //                 max-width: 80%;
+    //                 margin-left: auto;
+    //                 margin-right: auto;
+    //             }
+    //         }
+    //     }
+    // }
+
+
+// Sections
+
+.section-heading {
+    margin-top: 0;
+}
+
+
+
+.portfolio-box {
+    // cursor: url('../img/airplane.png'), pointer; /* Use a travel-themed image cursor */
+    position: relative;
+    display: block;
+    max-width: 1050px;
+    margin: 0 auto;
+    .portfolio-box-caption {
+        color: white;
+        opacity: 0;
+        display: block;
+        background: rgba( $theme-primary, .9 );
+        position: absolute;
+        bottom: 0;
+        text-align: center;
+        width: 100%;
+        height: 100%;
+        @include transition-all;
+        .portfolio-box-caption-content {
+            width: 100%;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            .project-category,
+            .project-name {
+                @include sans-serif-font;
+                padding: 0 15px;
+            }
+            .project-category {
+                text-transform: uppercase;
+                font-weight: 600;
+                font-size: 14px;
+            }
+            .project-name {
+                font-size: 18px;
+            }
+        }
+    }
+    &:hover {
+        .portfolio-box-caption {
+            opacity: 1;
+        }
+    }
+
+}
+
+.call-to-action {
+    h2 {
+        margin: 0 auto 20px;
+    }
+}
+
+// Bootstrap Overrides
+.text-primary {
+    color: $theme-primary;
+}
+
+.no-gutter > [class*='col-'] {
+    padding-right:0;
+    padding-left:0;
+}
+
+// Button Styles
+.btn-default {
+    @include button-variant($theme-dark, white, white);
+}
+
+.btn-primary {
+    @include button-variant(white, $theme-primary, $theme-primary);
+}
+
+.btn {
+    @include sans-serif-font;
+    border: none;
+    border-radius: 300px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.btn-xl {
+    padding: 1em 3em; /* Use relative units for proportional scaling */
+    font-size: 1.2em; /* Scales proportionally with the button */
+    width: 20%;
+    margin: 0 auto;
+    // transform: translateX(-50%); /* Adjust positioning as needed */
+    display: inline-flex; /* Ensures button content scales nicely */
+    justify-content: center; /* Centers the text */
+    align-items: center; /* Centers the text vertically */
+    box-sizing: border-box; /* Ensures padding is included in the width/height */
+}
+
+
+
+// Contact
+#contact .fa {
+    color: $theme-dark;
+    font-size: 4em;
+}
+
+// Extras
+// -- Highlight Color Customization
+::-moz-selection {
+    color: white;
+    text-shadow: none;
+    background: $theme-dark;
+}
+
+::selection {
+    color: white;
+    text-shadow: none;
+    background: $theme-dark;
+}
+
+img::selection {
+    color: white;
+    background: transparent;
+}
+
+img::-moz-selection {
+    color: white;
+    background: transparent;
+}
+
+body {
+    -webkit-tap-highlight-color: $theme-dark;
+}
+
+// media
+
+@media (max-width: 768px) {
+    // background-color: transparent;
+    // border-color: rgba(white, .3);
+
+    .navbar-header {
+        max-height: 30px; /* Reduce height */
+        padding: 5px 10px; /* Adjust padding */
+    }
+
+    .navbar-header .navbar-brand {
+        font-size: 14px; /* Reduce font size */
+        // padding: 5px 10px; 
+        color: rgba(white, .7);
+        &:hover,
+        &:focus {
+            color: white;
+        }
+    }
+
+    .navbar-toggle {
+        padding: 8px 10px; /* Adjust toggle button padding */
+    }
+
+    // .navbar-header .navbar-brand {
+    //     color: rgba(white, .7);
+    //     &:hover,
+    //     &:focus {
+    //         color: white;
+    //     }
+    // }
+
+    .nav > li > a,
+    .nav > li > a:focus {
+        color: rgba(white, .7);
+        &:hover {
+            color: white;
+        }
+    }
+
+    // &.affix {
+    //     background-color: white;
+    //     border-color: rgba($theme-dark, .5);
+    //     .navbar-header .navbar-brand {
+    //         color: $theme-primary;
+    //         font-size: 14px;
+    //         &:hover,
+    //         &:focus {
+    //             color: darken($theme-primary, 10%);
+    //         }
+    //     }
+    //     .nav > li > a,
+    //     .nav > li > a:focus {
+    //         color: $theme-dark;
+    //         &:hover {
+    //             color: $theme-primary;
+    //         }
+    //     }
+    // }
+
+    .btn {
+        display: inline-block; /* Ensure proper block alignment */
+        font-size: 1rem; /* Adjust font size for smaller screens */
+        padding: 10px 20px; /* Add consistent padding */
+        text-align: center; /* Center the text */
+        line-height: 1.2; /* Adjust line height for better alignment */
+        white-space: nowrap; /* Prevent text from wrapping inside the button */
+        box-sizing: border-box; /* Include padding and border in width calculation */
+    }
+
+    .btn.btn-primary {
+        font-size: 1rem;
+        padding: 12px 25px;
+        width: auto;
+        max-width: 90%;
+        margin: 10px auto;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 25px;
+    }
+
+    /* For extra large buttons */
+    .btn-xl {
+        display: block; /* Make the button take up its own line */
+        margin: 20px auto 0 auto; /* Center the button horizontally */
+        text-align: center; /* Center align the button content */
+        // font-size: 1.2rem;
+        // padding: 15px 30px;
+        // width: auto;
+        // max-width: 100%;
+        // text-align: center;
+        // display: inline-flex;
+        // justify-content: center;
+        // align-items: center;
+        // margin: 20px auto; /* Center the button */
+        // position: relative; /* Ensure it aligns properly */
+        // transform: translateX(-50%); /* Center-align horizontally */
+        // left: 50%; /* Place button in the center */
+    }
+
+    .btn.btn-primary.btn-xl.page-scroll {
+        display: block; /* Ensure the button occupies its own line */
+        margin: 20px auto; /* Center the button horizontally */
+        width: auto; /* Let the width adjust dynamically */
+        max-width: 90%; /* Restrict the button to 90% of the container width */
+        text-align: center; /* Center-align the button text */
+        padding: 15px 30px; /* Add sufficient padding for a good click target */
+        box-sizing: border-box; /* Include padding in the width calculation */
+    }
+
+    .portfolio-box-caption {
+        .portfolio-box-caption-content {
+            .project-category {
+                font-size: 16px;
+            }
+            .project-name {
+                font-size: 22px;
+            }
+        }
+    }
+
+    header {
+        text-align: center;
+    }
+
+    .header-content {
+        width: 100%;
+        max-width: 100%;
+        text-align: justify;
+        padding: 30px 0px;
+        box-sizing: border-box;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .header-content-inner {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        padding: 0 10px;
+        box-sizing: border-box;
+
+        h1 {
+            font-size: 1.8rem;
+            word-wrap: break-word;
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 10px 0 30px;
+            word-wrap: break-word;
+            text-align: justify;
+        }
+
+        hr {
+            margin: 20px auto;
+            width: 60%;
+        }
+    }
+
+    .header-content div {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+}

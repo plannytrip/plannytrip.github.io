@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include head.html %}
+
+
+<body id="page-top">
+  {% include nav.html %}
+  {% include header.html %}
+  {% include call-to-action.html %}
+  {% include services.html %}
+  {% include portfolio.html %}
+  {% include pricing-plans.html %}
+  {% include contact.html %}
+  {% include scripts.html %}
+  
+  <div class="sticky-note">
+    All services are available in 
+    <img src="img/flags/gb.png" alt="UK Flag" width="20"> English, 
+    <img src="img/flags/fr.png" alt="French Flag" width="20"> French, 
+    <img src="img/flags/de.png" alt="German Flag" width="20"> German
+</div>
+
+
+</body>
+
+<footer style="text-align: center; padding: 10px; background-color: #f8f8f8;">
+  <p>&copy; 2025. All Rights Reserved.</p>
+  <p>All pictures are private and cannot be reused without permission.</p>
+</footer>
+
+
+</html>
+
+<style>
+
+
+/* Sticky Note Styling */
+.sticky-note {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 500px;
+    background-color: yellow;
+    padding: 15px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+    .sticky-note {
+        width: 100%; /* Full width on mobile */
+        max-width: 100%; /* Ensures it fits any mobile screen */
+        left: 0;
+        right: 0;
+        bottom: 0; /* Always stick to the bottom */
+        padding: 10px; /* Reduce padding for small screens */
+        border-radius: 0; /* Remove border radius to fit screen */
+        font-size: 0.9rem; /* Slightly reduce font size for better fit */
+    }
+  }
+
+</style>

@@ -1,0 +1,100 @@
+<section id="services">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h3 class="section-heading">My services</h3>
+                <h3 class="section-heading">"Who dares, wins" </h3>
+            <!-- </h2 class="section-heading"> </h2> -->
+                <hr class="primary">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row-service">
+            <div class="col-md-4 text-center">
+                <div class="service-box">
+                    <i class="fa fa-4x fa-globe wow bounceIn text-primary"></i>
+                    <h3>Personalized Travel Consulting</h3>
+                    <p class="text-muted">Transform your travel dreams into reality with customized guidance —available in English, French, and German—   that empowers you to explore the world with confidence and ease.</p>
+                </div>
+            </div>
+            <div class="col-md-4  text-center">
+                <div class="service-box">
+                    <i class="fa fa-4x fa-map-marker wow bounceIn text-primary" data-wow-delay=".1s"></i>
+                    <h3>Bespoke Itineraries</h3>
+                    <p class="text-muted">Enjoy hand-crafted travel plans—whether you’re venturing solo or with others—designed to inspire, enrich, and make every journey unforgettable.</p>
+                </div>
+            </div>
+            <div class="col-md-4  text-center">
+                <div class="service-box">
+                    <i class="fa fa-4x fa-lightbulb-o wow bounceIn text-primary" data-wow-delay=".2s"></i>
+                    <h3>Insider Tips & Essential Guidance</h3>
+                    <p class="text-muted">Unlock hidden gems, cultural insights, and stress-free solutions for visas, insurance, and travel documentation—because every great adventure starts with smart preparation.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Service Box Styling */
+.service-box {
+    flex: 1; /* Make each box take up equal space */
+    height: 500px; /* Fixed height */
+    margin: 10px; /* Add spacing between boxes */
+    padding: 30px; /* Space inside the box */
+    background: linear-gradient(145deg, #ffffff, #e6e6e6); /* Gradient background */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    border-radius: 15px; /* Rounded corners for modern look */
+    text-align: center; /* Center-align content */
+    display: flex; /* Flexbox for layout */
+    flex-direction: column; /* Stack content vertically */
+    justify-content: center; /* Center items vertically */
+    align-items: center; /* Center items horizontally */
+    overflow: hidden; /* Clip overflow content */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+/* Hover Effect */
+.service-box:hover {
+    transform: scale(1.50); /* Slight zoom effect on hover */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+/* Row Service Styling */
+.row-service {
+    display: flex; /* Enable Flexbox */
+    justify-content: space-between; /* Ensure boxes are evenly spaced */
+    flex-wrap: nowrap; /* Prevent wrapping to the next line */
+    width: 100%; /* Full width */
+    margin: 0 auto; /* Center the row */
+    padding: 0 15px; /* Add padding on the sides */
+    box-sizing: border-box; /* Include padding in the width calculation */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .row-service {
+        flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        justify-content: center; /* Center-align wrapped items */
+    }
+
+    .service-box {
+        flex: 1 1 calc(45% - 20px); /* Adjust size for two boxes per row */
+        margin: 10px; /* Maintain spacing */
+    }
+}
+
+@media (max-width: 768px) {
+    .row-service {
+        flex-direction: column; /* Stack boxes vertically */
+        align-items: center; /* Center-align items */
+    }
+
+    .service-box {
+        width: 90%; /* Take up most of the screen on smaller devices */
+        height: auto; /* Adjust height for responsiveness */
+    }
+}
+
+</style>
