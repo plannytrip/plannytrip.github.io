@@ -27,4 +27,7 @@ Thumbs.db
 *.bak
 *.tmp
 
+Dockerfile
+Gemfile.lock
+Gemfile
 TODO.md
