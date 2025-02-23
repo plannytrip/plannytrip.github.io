@@ -1,0 +1,30 @@
+# Jekyll site
+_site/
+.sass-cache/
+.jekyll-cache/
+
+# Generated files
+*.gem
+*.lock
+*.log
+*.swp
+*.swo
+
+# Bundler
+vendor/bundle/
+vendor/cache/
+vendor/gems/
+vendor/ruby/
+
+# Node modules (if using Webpack, Gulp, etc.)
+node_modules/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.bak
+*.tmp
+
+TODO.md
